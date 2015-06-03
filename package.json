@@ -1,0 +1,21 @@
+{
+  "name": "oing-server",
+  "version": "1.0.0",
+  "description": "Server side (api) oing Siracusa",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrea Maddalena",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.12.4",
+    "express": "^4.12.3",
+    "formidable": "^1.0.17",
+    "fs-extra": "^0.18.4",
+    "jwt-simple": "^0.3.0",
+    "mongoose": "^4.0.2",
+    "morgan": "^1.5.3",
+    "q": "^1.4.0"
+  }
+}
