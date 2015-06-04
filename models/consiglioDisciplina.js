@@ -1,6 +1,9 @@
 var db = require('../config/db.js');
 var Schema = db.Schema;
 
+// common Objects or Schemas
+var logObj = require('./common/log');
+
 var collegioSchema = new Schema({
 	numero: 				{type: Number, required: true},
 	presidente:			{type: String, required: true},
@@ -26,7 +29,9 @@ var consiglioDisciplinaSchema = new Schema({
 	},
 	componenti:			[componenteSchema],
 	collegi:				[collegioSchema],
-	note:						String
+	note:						String,
+	log:						logObj,
+	deleted:				{type:Boolean, required: true, default: false}
 }, { collection: 'consigliDisciplina' });
 
 module.exports = db.model('ConsiglioDisciplina', consiglioDisciplinaSchema);

@@ -1,6 +1,8 @@
 var db = require('../config/db.js');
 var Schema = db.Schema;
 
+// common Objects or Schemas
+var logObj = require('./common/log');
 var allegatoSchema = require('./common/allegato');
 
 // common Objects or Schemas
@@ -27,7 +29,9 @@ var convenzioneSchema = new Schema({
 	destinatari: 		String,
 	requisiti:			[String],
 	allegati:				[allegatoSchema],
-	note:						String
+	note:						String,
+	log:						logObj,
+	deleted:				{type:Boolean, required: true, default: false}
 }, { collection: 'convenzioni' });
 
 module.exports = db.model('Convenzione', convenzioneSchema);

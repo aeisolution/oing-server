@@ -12,7 +12,8 @@ var routes = [
 	{verb: 'get', 	path: path + '/convenzioni', 			method: api.getAll},
 	{verb: 'get', 	path: path + '/convenzioni/:id', 	method: api.getOneById},
 	{verb: 'post', 	path: path + '/convenzioni', 			method: api.create},
-	{verb: 'put', 	path: path + '/convenzioni/:id', 	method: api.update}
+	{verb: 'put', 	path: path + '/convenzioni/:id', 	method: api.update},
+	{verb: 'delete', 	path: path + '/convenzioni/:id', 	method: api.delete}
 ];
 api.setRoutes(routes);
 

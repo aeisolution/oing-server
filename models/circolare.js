@@ -1,6 +1,8 @@
 var db = require('../config/db.js');
 var Schema = db.Schema;
 
+// common Objects or Schemas
+var logObj = require('./common/log');
 var allegatoSchema = require('./common/allegato');
 
 var circolareSchema = new Schema({
@@ -13,7 +15,9 @@ var circolareSchema = new Schema({
 	contenuto:			String,
 	destinatari: 		[String],
 	allegati:				[allegatoSchema],
-	note:						String
+	note:						String,
+	log:						logObj,
+	deleted:				{type:Boolean, required: true, default: false}
 }, { collection: 'circolari' });
 
 module.exports = db.model('Circolare', circolareSchema);

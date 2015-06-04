@@ -62,14 +62,17 @@ var entityService = function(model) {
 	
 	// getAll
 	self.getAll = function(fields, cb) {
-		self.getAllByFilter({}, fields, cb);
+		self.getAllByFilter({ deleted: false }, fields, cb);
 	};
 
 	// getAllByFilter
 	self.getAllByFilter = function(filter, fields, cb) {
-		console.log('self.getAllByFilter');
-		console.dir(filter);
-		console.log('-----------------');
+		
+		if(!filter) {
+			filter = { deleted: false };
+		} else {
+			filter.deleted = false;
+		}
 		
 		self.entity.find(filter, fields)
 			.exec(function(err, data) {
@@ -138,23 +141,12 @@ var entityService = function(model) {
 		var item = new self.entity(obj);
 		
 		self.validate(item, function (err) {
-  		if(err) { 
-					console.log('error validate');
-					console.dir(err);
-				return cb(err); 
-			}
+  		if(err) { return cb(err); }
 			
 			// creazione item valido
 			self.entity.findByIdAndUpdate(id, obj, { new: true }, function(err, data) {
-				if(err) { 
-					console.log('error');
-					console.dir(err);
-					return cb(err); 
-				}
+				if(err) { return cb(err); }
 
-					console.log('data');
-					console.dir(data);
-				
 				return cb(null, data);
 			});
 		});
@@ -165,11 +157,23 @@ var entityService = function(model) {
 	
 	// delete
 	self.delete = function(id, cb) {
+		/*
 		self.entity.findByIdAndRemove(id, function(err, data) {
 			if(err) { return cb(err); }
 
 			return cb(null, data);
 		});
+		*/
+
+		//Cancellazione sostituita con bit deleted=true
+		var dt = Date.now;
+		self.entity.findByIdAndUpdate(id, { deleted: true }, { new: true }, function(err, data) {
+			if(err) { return cb(err); }
+
+			return cb(null, data);
+		});
+		
+		
 	};
 	
 	//*********************

@@ -1,6 +1,9 @@
 var db = require('../config/db.js');
 var Schema = db.Schema;
 
+// common Objects or Schemas
+var logObj = require('./common/log');
+
 var componenteSchema = new Schema({
 	nominativo: 		{type: String, required: true},
 	ruolo:					{type: String, required: true, default: 'componente'},
@@ -19,7 +22,9 @@ var commissioneSchema = new Schema({
 		sezione:			{type: String, required: true}
 	},
 	componenti:			[componenteSchema],
-	note:						String
+	note:						String,
+	log:						logObj,
+	deleted:				{type:Boolean, required: true, default: false}
 }, { collection: 'commissioni' });
 
 module.exports = db.model('Commissione', commissioneSchema);

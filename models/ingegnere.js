@@ -2,6 +2,7 @@ var db = require('../config/db.js');
 var Schema = db.Schema;
 
 // common Objects or Schemas
+var logObj = require('./common/log');
 var indirizzoObj = require('./common/indirizzo');
 var nascitaObj = require('./common/nascita');
 
@@ -46,7 +47,9 @@ var ingegnereSchema = new Schema({
 	},
 	lauree: 				[laureaSchema],
 	esamiStato:			[esameStatoSchema],
-	note:						String
+	note:						String,
+	log:						logObj,
+	deleted:				{type:Boolean, required: true, default: false}
 }, { collection: 'ingegneri' });
 
 module.exports = db.model('Ingegnere', ingegnereSchema);

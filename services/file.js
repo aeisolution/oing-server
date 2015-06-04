@@ -20,7 +20,23 @@ var entityS = require('./entity');
 // PROTOTYPES
 
 // ------------------------------
-// 1. 
+// 1. PREVIEW
+entityS.prototype.preview = function(id, cb) {
+	console.log('entityS.prototype.preview - id');
+	
+	File.findOne({ _id: id },  
+							function(err, data){
+								if(err) { return cb(err) }
+								
+								console.log('result findOne');
+								console.dir(data);
+		
+								var filePath = data.path + data.filename;
+		
+								return cb(null, filePath);
+	});		 	
+}
+
 
 
 module.exports = new entityS(File);

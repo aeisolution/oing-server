@@ -1,6 +1,8 @@
 var db = require('../config/db.js');
 var Schema = db.Schema;
 
+// common Objects or Schemas
+var logObj = require('./common/log');
 var allegatoSchema = require('./common/allegato');
 
 // common Objects or Schemas
@@ -60,7 +62,9 @@ var eventoFormativoSchema = new Schema({
 	requisiti:			[String],
 	allegati:				[allegatoSchema],
 	priorita:				String,
-	note:						String
+	note:						String,
+	log:						logObj,
+	deleted:				{type:Boolean, required: true, default: false}
 }, { collection: 'enventiFormativi' });
 
 module.exports = db.model('EventoFormativo', eventoFormativoSchema);

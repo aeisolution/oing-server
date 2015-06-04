@@ -12,7 +12,8 @@ var routes = [
 	{verb: 'get', 	path: path + '/circolari', 			method: api.getAll},
 	{verb: 'get', 	path: path + '/circolari/:id', 	method: api.getOneById},
 	{verb: 'post', 	path: path + '/circolari', 			method: api.create},
-	{verb: 'put', 	path: path + '/circolari/:id', 	method: api.update}
+	{verb: 'put', 	path: path + '/circolari/:id', 	method: api.update},
+	{verb: 'delete', 	path: path + '/circolari/:id', 	method: api.delete}
 ];
 api.setRoutes(routes);
 

@@ -12,7 +12,8 @@ var routes = [
 	{verb: 'get', 	path: path + '/notizie', 			method: api.getAll},
 	{verb: 'get', 	path: path + '/notizie/:id', 	method: api.getOneById},
 	{verb: 'post', 	path: path + '/notizie', 			method: api.create},
-	{verb: 'put', 	path: path + '/notizie/:id', 	method: api.update}
+	{verb: 'put', 	path: path + '/notizie/:id', 	method: api.update},
+	{verb: 'delete', 	path: path + '/notizie/:id', 	method: api.delete}
 ];
 api.setRoutes(routes);
 

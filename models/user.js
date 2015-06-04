@@ -1,6 +1,9 @@
 var db = require('../config/db.js');
 var Schema = db.Schema;
 
+// common Objects or Schemas
+var logObj = require('./common/log');
+
 // ***** USER *****
 var userSchema = new Schema({
 	dtInsert:				{type: Date, required: true, default: Date.now },
@@ -9,7 +12,9 @@ var userSchema = new Schema({
 	role:						{type: String, required: true, default: 'user' },
 	username:				{type: String, required: true},
 	password:				{type: String, required: true, default: 'nuova Password'},
-	active:					Boolean
+	active:					Boolean,
+	log:						logObj,
+	deleted:				{type:Boolean, required: true, default: false}
 }, { collection: 'users' });
 
 
