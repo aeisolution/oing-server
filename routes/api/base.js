@@ -44,6 +44,18 @@ var apiBase = function(model) {
 			});		
   };
 
+	// getTop -  elenco 
+  self.getAll = function(req, res) {
+		var num	= req.parmas.num || 10,
+				fields = req.query || {};
+				
+		self.model.getTop(num, fields, function(err, data) {		
+				if(err) { return res.status(500).end(); }
+			
+				return res.json(data);
+			});		
+  };
+	
 	// getOneById - dettaglio
 	self.getOneById = function(req, res) {
 		var id = req.params.id || 0;

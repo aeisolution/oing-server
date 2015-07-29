@@ -1,4 +1,4 @@
 var mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/SR-oing');
+mongoose.connect('mongodb://boot2docker.local:27017/sr-oing');
 
 module.exports = mongoose

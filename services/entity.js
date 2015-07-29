@@ -102,7 +102,22 @@ var entityService = function(model) {
 				return cb(null, data);
 		});
 	};
+
+	// -- Top --------------
+	
+	// getTop
+	self.getTop = function(num, fields, cb) {
+		if(!num || num<1) { num = 1; }
 		
+		self.entity.find(fields)
+			.limit(self.num)
+			.exec(function(err, data) {
+				if(err) { return cb(err); }
+				
+				return cb(null, data);
+		});
+	};
+	
 	// -- One --------------
 	
 	// getOneById
